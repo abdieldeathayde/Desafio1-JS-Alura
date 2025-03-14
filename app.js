@@ -1,47 +1,28 @@
-//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
-
-
-
+let listaAmigos = [];
 
 function adicionarAmigo() {
-    
-
-    sorteio = null;
-    let lista_sorteio = [];
-
     let nome_amigo_sorteio = document.getElementById("amigo").value;
     
-    lista_sorteio.push("1", nome_amigo_sorteio);
-    // let adicionar = document.getElementsByClassName("button-add");
+    if (nome_amigo_sorteio.trim() === "") {
+        alert("Por favor, insira um nome válido.");
+        return;
+    }
 
-    let botao_adicionar = document.getElementsByClassName("button-add");
+    listaAmigos.push(nome_amigo_sorteio);
 
-    let listaAmigos = document.getElementById("resultado");
-
-    listaAmigos.innerHTML += `<li><p>Amigo adicionado: ${nome_amigo_sorteio} </p></li>`;
-
-    
-
+    let listaAmigosElement = document.getElementById("resultado");
+    listaAmigosElement.innerHTML += `<li><p>Amigo adicionado: ${nome_amigo_sorteio} </p></li>`;
 }
 
-function sortearAmigo(){
-
-    let listaAmigos = document.getElementById("resultado");
-
-    if (this.usuario < 2) {
+function sortearAmigo() {
+    if (listaAmigos.length < 2) {
         alert("Adicione pelo menos 2 amigos para sortear!");
         return;
     }
 
     const indice = Math.floor(Math.random() * listaAmigos.length);
-    
-    listaAmigos.innerHTML += `<li><p>Amigo Secreto: ${listaAmigos.indice}! </p></li>`;
+    let amigoSorteado = listaAmigos[indice];
 
-
-    //listaAmigos[indice]
-    // lista_sorteio.push(contador, listaAmigos[contador]);
-
-    // document.querySelector(".result").textContent = `Seu amigo secreto é: ${listaAmigos[indice]}`;
-
-    
+    let listaAmigosElement = document.getElementById("resultado");
+    listaAmigosElement.innerHTML += `<li><p>Amigo Secreto: ${amigoSorteado}! </p></li>`;
 }
